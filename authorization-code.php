@@ -1,7 +1,8 @@
 <?php
-$redirect_uri = 'https://your-redirect.url/';
-$client_id = '1234567890abcdefghijklmnopqrstuvwxyzABCD';
-$client_secret = '1234567890abcdefghijklmnopqrstuvwxyzABCD';
+
+$redirect_uri = 'https://api.test/api-test/';
+$client_id = '1fciS26onY5yH0U2cVkThlfj6aEp94ETTZ8AODJZ';
+$client_secret = '0ivGQ0mb0oHhx8ALEjBCxOanuK2xkWcbT2jDMbIl';
 
 if ( isset( $_GET['code'] ) ) {
 
@@ -47,9 +48,11 @@ if ( isset( $_GET['code'] ) ) {
 
 	$user = $token_response;
 }
+
 ?>
 
-<?php if ( ! is_null( $tmp ) ) {
+<?php if ( ! is_null( $tmp ) ) :
+	
 	print '<p>Below is the return from the OAuth Server. This information can be used to request the user information.</p>';
 	print '<pre>';
 	print_r( $tmp );
@@ -61,7 +64,9 @@ if ( isset( $_GET['code'] ) ) {
 	print '</pre>';
 
 	print '<a href="' . $redirect_uri . '">Return to Form</a>';
-} else { ?>
+	
+else : ?>
+
 	<h3>Login Form Example</h3>
 	<form id="leoadventures-auth-form" method="GET" action="https://leoadventures.com/oauth/authorize/">
 	    <input type="hidden" name="state" value="randomString123" />
@@ -72,4 +77,5 @@ if ( isset( $_GET['code'] ) ) {
 	         <img id="leoadventures_verification_button" width="350" height="72" alt="LeoAdventures verification button" srcset="https://leoadventures.com/wp-content/uploads/2021/03/Leo-White-350.png 1x, https://leoadventures.com/wp-content/uploads/2021/03/Leo-White-700.png 2x" src="https://leoadventures.com/wp-content/uploads/2021/03/Leo-White-350.png"/>
 	    </button>
 	</form>
-<?php } ?>
+	
+<?php endif;
